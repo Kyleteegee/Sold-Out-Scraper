@@ -1,0 +1,26 @@
+
+
+
+main loop outline-
+
+This code is specifically used for out of stock items.
+
+main():
+
+	out_of_stock = True
+	while out_of_stock:
+		*gather all html from all supplied URLs
+				- make base website of URL identifiable so multiple sites can be listed but processed differently
+				- implement async so page requests aren't blocking to speed up large lists of URLs
+				- scatter the timing of page requests to respect website requests + limit unintentional locking during html request
+				- implement the scatter timing in relation to number of URLs provided along with etiquette of limited page requests per website
+				- handle timeout exceptions to be skipped and tried again during the next html request
+				- request limit: request_per_second = 1 for each website per second( 3 best buy = 1 per second, 1 bestbuy+ 1 target + 1 newegg = 3 per second)
+				
+		Convert html to soup (BS4)
+		
+		*Check soup for sold out button
+				- if not sold_out:
+							open_url
+							some kind of alert, via sms/voice call/audio playback
+							start loop over without using last url
